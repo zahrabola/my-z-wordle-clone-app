@@ -5,7 +5,12 @@ import Keyboard from './Components/Keyboard';
 const Home = () => {
     return (
         <div>
-            Wordle - zahra's clone
+            <nav>
+<h1>   Wordle - zahra's clone</h1>
+            </nav>
+         <div>
+            
+         </div>
             <Board />
             <Keyboard />
         </div>

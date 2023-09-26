@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Letter = () => {
+const Letter = ({letterPos, attemptVal}) => {
     return (
-        <div>
+        <div className='letter'>
             letter
         </div>
     );

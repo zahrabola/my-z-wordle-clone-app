@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Letter from './Letter';
+import {defaultwordleboard } from "../Words";
 
 const Board = () => {
+    const [board, setBoard] = useState(defaultwordleboard);
 
     return (
         <div className='board'>
