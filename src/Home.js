@@ -7,12 +7,13 @@ export const AppContext = createContext();
 
 const Home = () => {
   const [board, setBoard] = useState(defaultwordleboard);
+  const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0})
   return (
     <div>
       <nav>
         <h1> Wordle - zahra's clone</h1>
       </nav>
-      <AppContext.Provider value={{ board, setBoard }}>
+      <AppContext.Provider value={{ board, setBoard, currentAttempt, setCurrentAttempt }}>
         <div className="game">
         <Board />
         <Keyboard />
@@ -24,3 +25,4 @@ const Home = () => {
 
 export default Home;
 // using context api
+//currentAttempt is a usestate object 

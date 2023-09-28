@@ -3,11 +3,12 @@ import { AppContext } from '../Home';
 
 
 const Key = ({keyValue, bigKey}) => {
-    const {board, setBoard} = useContext(AppContext);
+    const {board, setBoard,currentAttempt, setCurrentAttempt } = useContext(AppContext);
     const selectLetter = () => {
         const currrentNewBoard = [...board]
-        currrentNewBoard[0][0] = keyValue
+        currrentNewBoard[currentAttempt.attempt][currentAttempt.letterPos] = keyValue;
         setBoard(currrentNewBoard)
+        setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos + 1})
     }
     return (
         <div className='key' id={bigKey && "big"} onClick={selectLetter}>
