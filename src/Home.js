@@ -13,8 +13,10 @@ const Home = () => {
         <h1> Wordle - zahra's clone</h1>
       </nav>
       <AppContext.Provider value={{ board, setBoard }}>
+        <div className="game">
         <Board />
         <Keyboard />
+        </div>  
       </AppContext.Provider>
     </div>
   );
