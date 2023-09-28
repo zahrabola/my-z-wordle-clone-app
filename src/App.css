@@ -9,6 +9,7 @@
   height: 100vh;
   /* display: flex; */
   color: white;
+
 }
 
 body {
@@ -86,6 +87,7 @@ nav h1 {
   width: 700px;
   height: 300px;
   margin-top: 60px;
+  margin: auto;
 }
 
 .line1 {
