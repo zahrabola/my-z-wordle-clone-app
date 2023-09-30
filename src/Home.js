@@ -8,6 +8,18 @@ export const AppContext = createContext();
 const Home = () => {
   const [board, setBoard] = useState(defaultwordleboard);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0})
+  
+  const onSelectLetter = () => {
+
+  }
+   const onEnter = () => {
+
+   }
+
+   const onDelete = () => {
+
+    
+   }
   return (
     <div>
       <nav>
