@@ -3,26 +3,29 @@ import { AppContext } from '../Home';
 
 
 const Key = ({keyValue, bigKey}) => {
-    const {board, setBoard,currentAttempt, setCurrentAttempt } = useContext(AppContext);
+    const {onSelectLetter, onEnter, onDelete } = useContext(AppContext);
 
 
     const selectLetter = () => {
 if (keyValue === "Enter") {
-if (currentAttempt.letterPos !== 5) return;
-setCurrentAttempt ({attempt : currentAttempt.attempt + 1, letterPos: 0 });
+/*if (currentAttempt.letterPos !== 5) return;
+/setCurrentAttempt ({attempt : currentAttempt.attempt + 1, letterPos: 0 }); */
+onEnter()
 } else if (keyValue === "Delete"){
-    if (currentAttempt.letterPos === 0) return;
+    /*if (currentAttempt.letterPos === 0) return;
     const currrentNewBoard = [...board]
     currrentNewBoard[currentAttempt.attempt][currentAttempt.letterPos - 1] = "";
     setBoard(currrentNewBoard)
     setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos -1 })
-
+*/
+onDelete()
 } else {
-    if(currentAttempt.letterPos > 4) return;
+  /*  if(currentAttempt.letterPos > 4) return;
     const currrentNewBoard = [...board]
     currrentNewBoard[currentAttempt.attempt][currentAttempt.letterPos] = keyValue;
     setBoard(currrentNewBoard)
-    setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos + 1})
+    setCurrentAttempt({...currentAttempt, letterPos: currentAttempt.letterPos + 1}) */
+    onSelectLetter(keyValue)
 }
     
 }
