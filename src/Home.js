@@ -8,6 +8,9 @@ export const AppContext = createContext();
 const Home = () => {
   const [board, setBoard] = useState(defaultwordleboard);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0})
+
+
+  const correctWord = "RIGHT"
   
   const onSelectLetter = (keyValue) => {
     if(currentAttempt.letterPos > 4) return;
@@ -34,7 +37,7 @@ const Home = () => {
       <nav>
         <h1> Wordle - zahra's clone</h1>
       </nav>
-      <AppContext.Provider value={{ board, setBoard, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete  }}>
+      <AppContext.Provider value={{ board, setBoard, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete, correctWord }}>
         <div className="game">
         <Board />
         <Keyboard />

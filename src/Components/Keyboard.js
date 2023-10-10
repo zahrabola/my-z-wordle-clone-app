@@ -15,17 +15,17 @@ if (event.key === "Enter"){
   onDelete();
 } else {
   keys1.forEach((key) => {
-    if (event.key.toLowerCase() === key.toLowerCase()){
+    if (event.key === key){
       onSelectLetter(key)
     }
   })
   keys2.forEach((key) => {
-    if (event.key.toLowerCase() === key.toLowerCase()){
+    if (event.key === key){
       onSelectLetter(key)
     }
   })
   keys3.forEach((key) => {
-    if (event.key.toLowerCase() === key.toLowerCase()){
+    if (event.key === key){
       onSelectLetter(key)
     }
   })
