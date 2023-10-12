@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Board from "./Components/Board";
 import Keyboard from "./Components/Keyboard";
 import { createContext, useState } from "react";
-import {defaultwordleboard } from "./Components/Words";
+import {defaultwordleboard, wordGenerateSet } from "./Components/Words";
 export const AppContext = createContext();
 
 const Home = () => {
@@ -11,6 +11,13 @@ const Home = () => {
 
 
   const correctWord = "RIGHT"
+
+useEffect(() => {
+  wordGenerateSet().then((words) => {
+    console.log(words)
+  })
+}, [])
+
   
   const onSelectLetter = (keyValue) => {
     if(currentAttempt.letterPos > 4) return;
@@ -50,3 +57,4 @@ const Home = () => {
 export default Home;
 // using context api
 //currentAttempt is a usestate object 
+// create useeffect that only runs once 
