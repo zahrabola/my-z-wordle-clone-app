@@ -8,13 +8,15 @@ export const AppContext = createContext();
 const Home = () => {
   const [board, setBoard] = useState(defaultwordleboard);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0})
+  const [wordSet, setWordSet] = useState(new Set())
 
 
   const correctWord = "RIGHT"
 
 useEffect(() => {
   wordGenerateSet().then((words) => {
-    console.log(words)
+    //console.log(words)
+    setWordSet(words.wordSet);
   })
 }, [])
 
@@ -28,7 +30,21 @@ useEffect(() => {
   }
    const onEnter = () => {
     if (currentAttempt.letterPos !== 5) return;
-    setCurrentAttempt ({attempt : currentAttempt.attempt + 1, letterPos: 0 });
+
+    let currentWord = "";
+    for(let i = 0; i < 5; i ++){
+      currentWord += board[currentAttempt.attempt][i];
+    }
+    if (wordSet.has(currentWord.toLowerCase())) {
+      setCurrentAttempt ({attempt : currentAttempt.attempt + 1, letterPos: 0 });
+    } else {
+      alert("Word not found! Try agian")
+    }
+
+
+
+
+   
    }
 
    const onDelete = () => {
@@ -57,4 +73,4 @@ useEffect(() => {
 export default Home;
 // using context api
 //currentAttempt is a usestate object 
-// create useeffect that only runs once 
+// create useeffect that only runs once - giving access to the word set from word.js
