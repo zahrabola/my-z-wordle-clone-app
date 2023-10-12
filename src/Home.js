@@ -20,7 +20,6 @@ useEffect(() => {
   })
 }, [])
 
-  
   const onSelectLetter = (keyValue) => {
     if(currentAttempt.letterPos > 4) return;
     const currrentNewBoard = [...board]
@@ -32,19 +31,19 @@ useEffect(() => {
     if (currentAttempt.letterPos !== 5) return;
 
     let currentWord = "";
-    for(let i = 0; i < 5; i ++){
+    for (let i = 0; i < 5; i++) {
       currentWord += board[currentAttempt.attempt][i];
     }
     if (wordSet.has(currentWord.toLowerCase())) {
-      setCurrentAttempt ({attempt : currentAttempt.attempt + 1, letterPos: 0 });
-    } else {
-      alert("Word not found! Try agian")
+      setCurrentAttempt({attempt : currentAttempt.attempt + 1, letterPos: 0 });
+    } 
+    else {
+      alert("Word not found! Try Again");
     }
+    if (currentWord === correctWord){
+      alert ("Game Ended ")
 
-
-
-
-   
+    }
    }
 
    const onDelete = () => {

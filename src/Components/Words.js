@@ -15,9 +15,9 @@ await fetch(wordbank).then((response) => response.text())
 .then((result) => {
 console.log(result)
 const wordArray = result.split("\n")
-wordSet = new Set (wordArray)
+wordSet = new Set(wordArray)
 })
-return { wordSet}
+return {wordSet}
 };
 // empty letters like the board,  - one array represent a new attempt
 // board will represent each letter on each cell of the board and new attempt 

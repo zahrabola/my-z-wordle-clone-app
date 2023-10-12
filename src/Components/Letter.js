@@ -12,7 +12,7 @@ const Letter = ({letterPos, attemptVal}) => {
     currentAttempt.attempt > attemptVal &&
       (correct ? "correct" : almost ? "almost" : "error");
     return (
-        <div className='letter'id={letterState}>
+        <div className="letter" id={letterState}>
             {letter}
         </div>
     );

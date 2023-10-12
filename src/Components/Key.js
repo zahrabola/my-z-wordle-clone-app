@@ -20,7 +20,7 @@ onDelete()
     
 }
     return (
-        <div className='key' id={bigKey && "big"} onClick={selectLetter}>
+        <div   className="key" id={bigKey && "big"} onClick={selectLetter}>
         {keyValue}
         </div>
     );
