@@ -3,28 +3,28 @@ import { AppContext } from '../Home';
 
 
 const Key = ({keyValue, bigKey, disabled }) => {
-    const {onSelectLetter, onEnter, onDelete } = useContext(AppContext);
+    const {onSelectLetter, onEnter, onDelete, gameOver } = useContext(AppContext);
 
 
     const selectLetter = () => {
-if (keyValue === "ENTER") {
-onEnter()
-} else if (keyValue === "DELETE"){
-onDelete()
-} else {
-    onSelectLetter(keyValue)
-}
-    
-}
-    return (
-        <div
-        className="key"
-        id={bigKey ? "big" : disabled && "disabled"}
-        onClick={selectLetter}
-      >
-        {keyValue}
-      </div>
-    );
+      if (gameOver.gameOver) return;
+    if (keyValue === "ENTER") {
+      onEnter();
+    } else if (keyValue === "DELETE") {
+      onDelete();
+    } else {
+      onSelectLetter(keyValue);
+    }
+  };
+  return (
+    <div
+      className="key"
+      id={bigKey ? "big" : disabled && "disabled"}
+      onClick={selectLetter}
+    >
+      {keyValue}
+    </div>
+  );
 }
 
 export default Key;

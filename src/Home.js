@@ -8,8 +8,9 @@ export const AppContext = createContext();
 
 const Home = () => {
   const [board, setBoard] = useState(defaultwordleboard);
-  const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0})
+  const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0});
   const [wordSet, setWordSet] = useState(new Set())
+  
   const [disabledLetters, setDisabledLetters] = useState([])
   const [gameOver, setgameOver] = useState({gameOver:false,  guessedWord: false,})
 
@@ -41,8 +42,10 @@ setgameOver({gameOver: true, guessedWord:true})
 return
 
   }
+  console.log(currentAttempt);
   if (currentAttempt.attempt === 5){
     setgameOver({gameOver: true, guessedWord:false})
+    return;
   }
  }
 
@@ -70,8 +73,20 @@ return
       <nav>
         <h1> Wordle - zahra's clone</h1>
       </nav>
-      <AppContext.Provider value={{ board, setBoard, currentAttempt, setCurrentAttempt, onSelectLetter, onEnter, onDelete, correctWord, setDisabledLetters, disabledLetters, setgameOver,
-      gameOver}}>
+      <AppContext.Provider 
+      value={{ 
+           board,
+           setBoard,
+           currentAttempt, 
+           setCurrentAttempt,
+           onSelectLetter, 
+           onEnter, 
+           onDelete, 
+           correctWord, 
+           setDisabledLetters, 
+           disabledLetters, 
+           setgameOver,
+           gameOver}}>
         <div className="game">
         <Board />
         {gameOver.gameOver ? <GameOver /> : <Keyboard />}

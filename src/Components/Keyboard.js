@@ -7,8 +7,18 @@ const Keyboard = () => {
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
-  const { onEnter, onDelete, onSelectLetter,currentAttempt, disabledLetters, gameOver} = useContext(AppContext);
 
+  const {
+    onEnter,
+    onDelete,
+    onSelectLetter,
+    currentAttempt,
+    disabledLetters,
+    gameOver,
+  board
+  } = useContext(AppContext);
+
+ 
   const handleKeyboard = useCallback(
     (event) => {
       if (gameOver.gameOver) return;
@@ -36,7 +46,6 @@ const Keyboard = () => {
     },
     [currentAttempt]
   );
-  
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboard);
 
@@ -44,30 +53,30 @@ const Keyboard = () => {
       document.removeEventListener("keydown", handleKeyboard);
     };
   }, [handleKeyboard]);
+
   console.log(disabledLetters);
   return (
     <div className="keyboard" onKeyDown={handleKeyboard}>
-    <div className="line1">
-      {keys1.map((key) => {
-        return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
-      })}
+      <div className="line1">
+        {keys1.map((key) => {
+          return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
+        })}
+      </div>
+      <div className="line2">
+        {keys2.map((key) => {
+          return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
+        })}
+      </div>
+      <div className="line3">
+        <Key keyValue={"ENTER"} bigKey />
+        {keys3.map((key) => {
+          return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
+        })}
+        <Key keyValue={"DELETE"} bigKey />
+      </div>
     </div>
-    <div className="line2">
-      {keys2.map((key) => {
-        return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
-      })}
-    </div>
-    <div className="line3">
-      <Key keyVal={"ENTER"} bigKey />
-      {keys3.map((key) => {
-        return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
-      })}
-      <Key keyVal={"DELETE"} bigKey />
-    </div>
-  </div>
   );
-};
-
+}
 export default Keyboard;
 /// creating keyboard
 /// creating an array for each line of letters
