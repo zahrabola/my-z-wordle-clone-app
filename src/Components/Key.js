@@ -17,9 +17,13 @@ onDelete()
     
 }
     return (
-        <div   className="key" id={bigKey ? "big" : disabled && "disabled" } onClick={selectLetter}>
+        <div
+        className="key"
+        id={bigKey ? "big" : disabled && "disabled"}
+        onClick={selectLetter}
+      >
         {keyValue}
-        </div>
+      </div>
     );
 }
 

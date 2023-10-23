@@ -18,7 +18,7 @@ const Letter = ({letterPos, attemptVal}) => {
       }
     }, [currentAttempt.attempt]);
     return (
-      <div className="letter" id={letterState}>
+      <div className="letter" id={letterState.toString()}>
         {letter}
       </div>
     );
