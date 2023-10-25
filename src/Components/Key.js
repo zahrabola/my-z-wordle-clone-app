@@ -2,12 +2,12 @@ import React, {useContext} from 'react';
 import { AppContext } from '../Home';
 
 
-const Key = ({keyValue, bigKey, disabled }) => {
-    const {onSelectLetter, onEnter, onDelete, gameOver } = useContext(AppContext);
+const Key = ({ keyValue, bigKey, disabled }) => {
+  const { gameOver, onSelectLetter, onDelete, onEnter } =
+    useContext(AppContext);
 
-
-    const selectLetter = () => {
-      if (gameOver.gameOver) return;
+  const selectLetter = () => {
+    if (gameOver.gameOver) return;
     if (keyValue === "ENTER") {
       onEnter();
     } else if (keyValue === "DELETE") {

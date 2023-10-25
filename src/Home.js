@@ -10,19 +10,20 @@ const Home = () => {
   const [board, setBoard] = useState(defaultwordleboard);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, letterPos: 0});
   const [wordSet, setWordSet] = useState(new Set())
-  
+  const [correctWord, setCorrectWord] = useState("");
   const [disabledLetters, setDisabledLetters] = useState([])
   const [gameOver, setgameOver] = useState({gameOver:false,  guessedWord: false,})
 
 
-  const correctWord = "RIGHT"
+
 
 useEffect(() => {
   wordGenerateSet().then((words) => {
-    //console.log(words)
+       //console.log(words)
     setWordSet(words.wordSet);
-  })
-}, [])
+    setCorrectWord(words.todaysWord);
+  });
+}, []);
 
 const onEnter = () => {
   if (currentAttempt.letterPos !== 5) return;
@@ -42,11 +43,12 @@ setgameOver({gameOver: true, guessedWord:true})
 return
 
   }
-  console.log(currentAttempt);
+  ///console.log(currentAttempt);
   if (currentAttempt.attempt === 5){
     setgameOver({gameOver: true, guessedWord:false})
     return;
   }
+
  }
 
  const onDelete = () => {
@@ -87,11 +89,10 @@ return
            disabledLetters, 
            setgameOver,
            gameOver}}>
-        <div className="game">
-        <Board />
-        {gameOver.gameOver ? <GameOver /> : <Keyboard />}
-        
-        </div>  
+         <div className="game">
+          <Board />
+          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+        </div> 
       </AppContext.Provider>
     </div>
   );

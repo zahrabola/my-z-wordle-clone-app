@@ -2,10 +2,10 @@ import { useCallback, useEffect, useContext } from "react";
 import Key from "./Key";
 import { AppContext } from '../Home';
 const Keyboard = () => {
-
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
+
 
 
   const {
@@ -19,7 +19,6 @@ const Keyboard = () => {
 
   } = useContext(AppContext);
 
- 
   const handleKeyboard = useCallback(
     (event) => {
       if (gameOver.gameOver) return;
@@ -55,29 +54,30 @@ const Keyboard = () => {
     };
   }, [handleKeyboard]);
 
-  console.log(disabledLetters);
+  //console.log(disabledLetters);
   return (
     <div className="keyboard" onKeyDown={handleKeyboard}>
       <div className="line1">
-        {keys1.map((key, i) => {
-          return <Key keyValue={key} key={i} disabled={disabledLetters.includes(key)} />;
+        {keys1.map((key) => {
+          return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
         })}
       </div>
       <div className="line2">
-        {keys2.map((key, i) => {
-          return <Key keyValue={key} key={i} disabled={disabledLetters.includes(key)} />;
+        {keys2.map((key) => {
+          return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
         })}
       </div>
       <div className="line3">
-        <Key keyValue={"ENTER"} bigKey />
-        {keys3.map((key, i) => {
-          return <Key keyValue={key}  key={i} disabled={disabledLetters.includes(key)} />;
+      <Key keyValue={"ENTER"} bigKey />
+        {keys3.map((key) => {
+          return <Key keyValue={key} disabled={disabledLetters.includes(key)} />;
         })}
         <Key keyValue={"DELETE"} bigKey />
       </div>
     </div>
   );
 }
+
 export default Keyboard;
 /// creating keyboard
 /// creating an array for each line of letters
